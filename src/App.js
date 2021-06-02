@@ -1,10 +1,14 @@
+import { Container } from "@material-ui/core";
 import React from "react";
+import NavBar from "./components/organisms/NavBar";
+import Library from "./components/pages/Library";
 
 const App = () => {
   return (
-    <>
-      <h1 className="heading">Welcome Today is {new Date().toDateString()}</h1>
-    </>
+    <Container maxWidth="md">
+      <NavBar />
+      <Library />
+    </Container>
   );
 };
 

@@ -34,6 +34,6 @@ module.exports = {
   ],
   devServer: {
     port: 3000,
-    contentBase: path.resolve(__dirname, "./public/index.html"),
+    contentBase: path.resolve(__dirname, "./public/"),
   },
 };

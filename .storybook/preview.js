@@ -1,4 +1,3 @@
-
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -7,4 +6,20 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+};
+const decoratorStyle = {
+  backgroundColor: "#fff",
+  // textAlign: "center",
+  padding: "3em",
+  fontFamily: `"CeraPRO-Regular", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+  "Helvetica Neue", sans-serif`,
+};
+
+export const decorators = [
+  (Story) => (
+    <div style={decoratorStyle}>
+      <Story />
+    </div>
+  ),
+];
