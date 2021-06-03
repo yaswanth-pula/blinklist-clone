@@ -5,6 +5,9 @@ const useStyles = makeStyles({
   text: {
     display: "block",
     color: "#03314b",
+    fontFamily: ` "CeraPRO", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif`,
   },
   text_header: {
     fontSize: "2.25rem",
@@ -31,6 +34,7 @@ const useStyles = makeStyles({
   },
   text_input_label: {
     fontSize: "1.125rem",
+    fontFamily: "inherit",
     fontWeight: "700",
     lineHeight: "1.33",
     color: "#6d787e",
@@ -38,6 +42,7 @@ const useStyles = makeStyles({
     marginBottom: ".5rem",
   },
   text_form_header: {
+    fontFamily: "inherit",
     fontSize: "1.5rem",
     fontWeight: "700",
     lineHeight: "1.33",

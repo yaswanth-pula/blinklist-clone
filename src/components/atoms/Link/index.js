@@ -68,7 +68,7 @@ Link.propTypes = {
 };
 
 Link.defaultProps = {
-  href: "#",
+  href: null,
   endIcon: null,
   clickHandler: null,
   variant: null,

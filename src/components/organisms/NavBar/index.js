@@ -3,6 +3,7 @@ import Link from "../../atoms/Link";
 import KeyboardArrowDownRoundedIcon from "@material-ui/icons/KeyboardArrowDownRounded";
 import AppLogo from "../../moleclues/AppLogo";
 import React from "react";
+import AddBook from "../AddBook";
 
 const useStyles = makeStyles({
   navbar: {
@@ -44,7 +45,8 @@ const NavBar = () => {
           variant="navLink"
         />
         <Link href="#" text="My Library" variant="navLink" />
-        <Link href="https://www.google.com" text="Add Book" variant="navLink" />
+        {/* <Link href="https://www.google.com" text="Add Book" variant="navLink" /> */}
+        <AddBook />
       </div>
       <div className={styles.accountLink}>
         <Link

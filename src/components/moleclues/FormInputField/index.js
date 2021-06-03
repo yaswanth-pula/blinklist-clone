@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
-    margin: "1em",
+    margin: "1.5em 1em",
   },
 });
 
