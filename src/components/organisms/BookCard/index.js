@@ -9,9 +9,11 @@ import CardStat from "../../moleclues/CardStat";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import { IconButton, Button } from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import Link from "../../atoms/Link";
+import PropTypes from "prop-types";
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 300,
@@ -38,15 +40,13 @@ const useStyles = makeStyles({
 
 const BookCard = (props) => {
   const styles = useStyles();
-  const { bookInfo } = props;
+  const { bookInfo, variant } = props;
   return (
     <Grid item md={4} sm={6} xs={12}>
       <Card className={styles.root} variant="outlined">
         <CardMedia
           component="img"
           className={styles.card_image}
-          // src="https://images.blinkist.com/images/books/5f90514d6cee07000608d799/1_1/250.jpg"
-          // src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1457542606l/25136217._SY475_.jpg"
           src={bookInfo.url}
           alt="sampleBook"
         />
@@ -72,17 +72,29 @@ const BookCard = (props) => {
             />
           </div>
         </CardContent>
-        <CardActions className={styles.options}>
-          <Button color="primary" size="small" variant="outlined">
-            Mark As Done
-          </Button>
-          <IconButton>
-            <MoreHorizIcon />
-          </IconButton>
-        </CardActions>
+        {variant === "library" && (
+          <CardActions className={styles.options}>
+            {bookInfo.status === "reading" ? (
+              <Link text="Mark as done" variant="libraryCardButton" />
+            ) : (
+              <Link text="Read Again" variant="libraryCardButton" />
+            )}
+            <IconButton>
+              <MoreHorizIcon />
+            </IconButton>
+          </CardActions>
+        )}
+        {variant === "explore" && (
+          <Link text="+ Add to Library" variant="exploreCardButton" />
+        )}
       </Card>
     </Grid>
   );
+};
+
+BookCard.propTypes = {
+  bookInfo: PropTypes.object,
+  variant: PropTypes.oneOf(["library", "explore"]),
 };
 
 export default BookCard;

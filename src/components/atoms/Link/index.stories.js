@@ -11,6 +11,7 @@ export const Primary = Template.bind({});
 Primary.args = {
   text: "My Library",
   href: "#",
+  variant: "navLink",
 };
 Primary.storyname = "Simple Link";
 
@@ -18,14 +19,16 @@ export const WithIcon = Template.bind({});
 WithIcon.args = {
   text: "Explore",
   href: "#",
+  variant: "navLink",
   endIcon: <KeyboardArrowDownRoundedIcon />,
 };
 
-export const AsButtonClick = Template.bind({});
+export const AsButton = Template.bind({});
 const buttonHandler = () => {
   console.log("Account Button Clicked");
 };
-AsButtonClick.args = {
-  text: "Account",
+AsButton.args = {
+  text: "+ Add to Library",
   clickHandler: buttonHandler,
+  variant: "cardButton",
 };

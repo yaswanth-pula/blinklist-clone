@@ -29,6 +29,21 @@ const useStyles = makeStyles({
     lineHeight: "1.57",
     color: "#3a4649",
   },
+  text_input_label: {
+    fontSize: "1.125rem",
+    fontWeight: "700",
+    lineHeight: "1.33",
+    color: "#6d787e",
+    display: "block",
+    marginBottom: ".5rem",
+  },
+  text_form_header: {
+    fontSize: "1.5rem",
+    fontWeight: "700",
+    lineHeight: "1.33",
+    color: "#03314b",
+    marginBottom: "1.5rem",
+  },
 });
 
 const Text = (props) => {

@@ -30,3 +30,15 @@ CardStatText.args = {
   content: "13 minute read",
   variant: "text_card_stat",
 };
+
+export const InputLabel = Template.bind({});
+InputLabel.args = {
+  content: "BookName",
+  variant: "text_input_label",
+};
+
+export const InputFormHeader = Template.bind({});
+InputFormHeader.args = {
+  content: "Add New Book",
+  variant: "text_form_header",
+};

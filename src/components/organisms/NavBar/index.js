@@ -41,14 +41,16 @@ const NavBar = () => {
           href="#"
           text="Explore"
           endIcon={<KeyboardArrowDownRoundedIcon />}
+          variant="navLink"
         />
-        <Link href="#" text="My Library" />
-        <Link href="https://www.google.com" text="Add Book" />
+        <Link href="#" text="My Library" variant="navLink" />
+        <Link href="https://www.google.com" text="Add Book" variant="navLink" />
       </div>
       <div className={styles.accountLink}>
         <Link
           href="#"
           text="Account"
+          variant="navLink"
           endIcon={<KeyboardArrowDownRoundedIcon />}
           // clickHandler={handleLog}
         />
