@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { FullscreenExit } from "@material-ui/icons";
 import React from "react";
 
 const useStyles = makeStyles({
@@ -10,7 +9,7 @@ const useStyles = makeStyles({
     color: "#3a4649",
     fontWeight: "500",
     fontSize: "1rem",
-    fontFamily: "CeraPRO",
+    fontFamily: "inherit",
     lineHeight: "1.25",
     background: "none",
     border: "2px solid #bac8ce",
@@ -28,11 +27,16 @@ const useStyles = makeStyles({
 });
 
 const InputField = (props) => {
-  const { type, value } = props;
+  const { type, value, changeHandler } = props;
   const styles = useStyles();
   return (
     <div className={styles.fieldContainer}>
-      <input type="text" className={styles.field} />
+      <input
+        type={type}
+        className={styles.field}
+        value={value}
+        onChange={changeHandler}
+      />
     </div>
   );
 };

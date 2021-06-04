@@ -4,6 +4,7 @@ import KeyboardArrowDownRoundedIcon from "@material-ui/icons/KeyboardArrowDownRo
 import AppLogo from "../../moleclues/AppLogo";
 import React from "react";
 import AddBook from "../AddBook";
+import ExploreMenu from "../ExploreMenu";
 
 const useStyles = makeStyles({
   navbar: {
@@ -38,14 +39,8 @@ const NavBar = () => {
         <AppLogo />
       </div>
       <div className={styles.mainLinks}>
-        <Link
-          href="#"
-          text="Explore"
-          endIcon={<KeyboardArrowDownRoundedIcon />}
-          variant="navLink"
-        />
+        <ExploreMenu />
         <Link href="#" text="My Library" variant="navLink" />
-        {/* <Link href="https://www.google.com" text="Add Book" variant="navLink" /> */}
         <AddBook />
       </div>
       <div className={styles.accountLink}>

@@ -47,7 +47,6 @@ const useStyles = makeStyles({
     fontWeight: "700",
     lineHeight: "1.33",
     color: "#03314b",
-    marginBottom: "1.5rem",
   },
 });
 

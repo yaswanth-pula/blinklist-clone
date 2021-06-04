@@ -23,12 +23,19 @@ WithIcon.args = {
   endIcon: <KeyboardArrowDownRoundedIcon />,
 };
 
-export const AsButton = Template.bind({});
+export const ExploreCardButton = Template.bind({});
 const buttonHandler = () => {
   console.log("Account Button Clicked");
 };
-AsButton.args = {
+ExploreCardButton.args = {
   text: "+ Add to Library",
   clickHandler: buttonHandler,
-  variant: "cardButton",
+  variant: "exploreCardButton",
+};
+
+export const LibraryCardButton = Template.bind({});
+LibraryCardButton.args = {
+  text: "Mark As Done",
+  clickHandler: buttonHandler,
+  variant: "libraryCardButton",
 };

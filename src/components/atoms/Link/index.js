@@ -8,6 +8,7 @@ const useStyles = makeStyles({
     fontSize: "1rem",
     fontWeight: 500,
     lineHeight: 1,
+    cursor: "pointer",
   },
   navLink: {
     display: "inline-flex",
@@ -28,6 +29,7 @@ const useStyles = makeStyles({
     textAlign: "center",
     "&:hover": {
       color: "#fff",
+      cursor: "pointer",
       background: "#0365F2",
     },
   },
@@ -40,6 +42,16 @@ const useStyles = makeStyles({
     "&:hover": {
       color: "#fff",
       background: "#0365F2",
+      cursor: "pointer",
+    },
+  },
+  exploreCategoryText: {
+    fontFamily: "inherit",
+    fontSize: "1rem",
+    fontWeight: "400",
+    lineHeight: "1.5",
+    "&:hover": {
+      color: "#0365f2",
     },
   },
 });
@@ -51,7 +63,7 @@ const Link = (props) => {
     <a
       href={href}
       className={[`${styles.root}`, `${variantStyle}`, customClass].join(" ")}
-      onClick={clickHandler ? () => clickHandler() : null}
+      onClick={clickHandler ? (event) => clickHandler(event) : null}
     >
       {text}
       <span>{endIcon}</span>
