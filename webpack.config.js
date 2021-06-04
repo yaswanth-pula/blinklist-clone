@@ -33,7 +33,7 @@ module.exports = {
     }),
   ],
   devServer: {
-    port: 3000,
+    port: 3257,
     contentBase: path.resolve(__dirname, "./public/"),
   },
 };

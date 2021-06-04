@@ -33,7 +33,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ExploreMenu = () => {
+const ExploreMenu = ({ clickHandler }) => {
   const styles = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -43,6 +43,10 @@ const ExploreMenu = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const handleCategoriesClick = (event, selectedCategory) => {
+    handleClose();
+    clickHandler(event, selectedCategory);
   };
   const categories = [
     "Entrepreneurship",
@@ -100,6 +104,7 @@ const ExploreMenu = () => {
                     text={currentCategory}
                     variant="exploreCategoryText"
                     customClass={styles.item}
+                    clickHandler={handleCategoriesClick}
                   />
                 </Grid>
               );

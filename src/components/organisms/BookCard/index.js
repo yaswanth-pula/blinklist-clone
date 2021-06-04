@@ -40,7 +40,30 @@ const useStyles = makeStyles({
 
 const BookCard = (props) => {
   const styles = useStyles();
-  const { bookInfo, variant } = props;
+  const { bookInfo, variant, parentUpdate } = props;
+  const currentBookId = bookInfo.id;
+  const currentBookStatus = bookInfo.status;
+
+  const updateBookStatus = (bookId, updatedStatus) => {
+    const url = `http://localhost:3000/books/${bookId}`;
+
+    fetch(url, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status: updatedStatus }),
+    }).catch((err) => {
+      console.log(err);
+    });
+  };
+
+  const handleUpdate = () => {
+    let updatedStatus =
+      currentBookStatus === "reading" ? "finished" : "reading";
+    updateBookStatus(currentBookId, updatedStatus);
+  };
+
   return (
     <Grid item md={4} sm={6} xs={12}>
       <Card className={styles.root} variant="outlined">
@@ -75,17 +98,29 @@ const BookCard = (props) => {
         {variant === "library" && (
           <CardActions className={styles.options}>
             {bookInfo.status === "reading" ? (
-              <Link text="Mark as done" variant="libraryCardButton" />
+              <Link
+                text="Mark as done"
+                variant="libraryCardButton"
+                clickHandler={handleUpdate}
+              />
             ) : (
-              <Link text="Read Again" variant="libraryCardButton" />
+              <Link
+                text="Read Again"
+                variant="libraryCardButton"
+                clickHandler={handleUpdate}
+              />
             )}
             <IconButton>
               <MoreHorizIcon />
             </IconButton>
           </CardActions>
         )}
-        {variant === "explore" && (
-          <Link text="+ Add to Library" variant="exploreCardButton" />
+        {variant === "explore" && bookInfo.status === "fresh" && (
+          <Link
+            text="+ Add to Library"
+            variant="exploreCardButton"
+            clickHandler={handleUpdate}
+          />
         )}
       </Card>
     </Grid>

@@ -31,16 +31,24 @@ const useStyles = makeStyles({
     justifyContent: "flex-end",
   },
 });
-const NavBar = () => {
+const NavBar = ({ parentUpdate }) => {
   const styles = useStyles();
+  const handleNavClick = (event, child) => {
+    parentUpdate(child);
+  };
   return (
     <div className={styles.navbar}>
       <div className={styles.navLogo}>
         <AppLogo />
       </div>
       <div className={styles.mainLinks}>
-        <ExploreMenu />
-        <Link href="#" text="My Library" variant="navLink" />
+        <ExploreMenu clickHandler={handleNavClick} />
+        <Link
+          href="#"
+          text="My Library"
+          variant="navLink"
+          clickHandler={handleNavClick}
+        />
         <AddBook />
       </div>
       <div className={styles.accountLink}>

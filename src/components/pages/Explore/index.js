@@ -14,14 +14,13 @@ const useStyles = makeStyles({
   },
 });
 
-const Library = () => {
+const Explore = () => {
   const styles = useStyles();
-
   const [books, setBooks] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
 
-  const requestServer = (param) => {
-    let url = `http://localhost:3000/books?status=${param}`;
+  const requestServer = () => {
+    let url = `http://localhost:3000/books`;
 
     fetch(url)
       .then((res) => res.json())
@@ -33,28 +32,23 @@ const Library = () => {
         console.log(error);
       });
   };
-
   useEffect(() => {
-    requestServer("reading");
+    requestServer();
   }, []);
-
-  const renderTabBookList = (tabId) => {
-    tabId ? requestServer("finished") : requestServer("reading");
-  };
-
   return (
-    <div className={styles.root}>
-      <div className={styles.header}>
-        <Text content="My Library" variant="text_header" />
+    <>
+      <div className={styles.root}>
+        <div className={styles.header}>
+          <Text content="Explore" variant="text_header" />
+        </div>
+        {isFetching ? (
+          <h1>Loading....</h1>
+        ) : (
+          <BooksList booksList={books} variant="explore" />
+        )}
       </div>
-      <LibraryTabs informParent={renderTabBookList} />
-      {isFetching ? (
-        <h1>Loading....</h1>
-      ) : (
-        <BooksList booksList={books} variant="library" />
-      )}
-    </div>
+    </>
   );
 };
 
-export default Library;
+export default Explore;
