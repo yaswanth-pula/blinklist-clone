@@ -27,15 +27,16 @@ const useStyles = makeStyles({
 });
 
 const InputField = (props) => {
-  const { type, value, changeHandler } = props;
+  const { id, type, value, changeHandler } = props;
   const styles = useStyles();
   return (
     <div className={styles.fieldContainer}>
       <input
+        id={id}
         type={type}
         className={styles.field}
         value={value}
-        onChange={changeHandler}
+        onChange={(event) => changeHandler(event)}
       />
     </div>
   );

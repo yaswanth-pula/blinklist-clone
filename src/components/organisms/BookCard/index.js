@@ -21,6 +21,8 @@ const useStyles = makeStyles({
   card_image: {
     "& img": {
       width: "100%",
+      maxWidth: "250px",
+      maxHeight: "250px",
     },
   },
   stat: {
@@ -62,6 +64,9 @@ const BookCard = (props) => {
     let updatedStatus =
       currentBookStatus === "reading" ? "finished" : "reading";
     updateBookStatus(currentBookId, updatedStatus);
+    if (currentBookStatus === "reading") parentUpdate(0);
+    if (currentBookStatus === "finished") parentUpdate(1);
+    if (currentBookStatus === "fresh") parentUpdate();
   };
 
   return (

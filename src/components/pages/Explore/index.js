@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Text from "../../atoms/Text";
 import BooksList from "../../organisms/BooksList";
-import LibraryTabs from "../../organisms/LibraryTabs";
 
 const useStyles = makeStyles({
   root: {
@@ -14,14 +13,16 @@ const useStyles = makeStyles({
   },
 });
 
-const Explore = () => {
+const Explore = ({ selectedCategory }) => {
   const styles = useStyles();
   const [books, setBooks] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
+  const [parentRender, setParentRender] = useState("");
 
-  const requestServer = () => {
-    let url = `http://localhost:3000/books`;
-
+  const requestServer = (category) => {
+    let cat = escape(category);
+    let url = `http://localhost:3000/books?category=${cat}`;
+    setIsFetching(true);
     fetch(url)
       .then((res) => res.json())
       .then((result) => {
@@ -30,11 +31,17 @@ const Explore = () => {
       })
       .catch((error) => {
         console.log(error);
+        setIsFetching(false);
       });
   };
   useEffect(() => {
-    requestServer();
-  }, []);
+    requestServer(selectedCategory);
+  }, [parentRender, selectedCategory]);
+
+  const handleExploreUpdate = () => {
+    setParentRender(Date.now());
+  };
+
   return (
     <>
       <div className={styles.root}>
@@ -44,7 +51,11 @@ const Explore = () => {
         {isFetching ? (
           <h1>Loading....</h1>
         ) : (
-          <BooksList booksList={books} variant="explore" />
+          <BooksList
+            booksList={books}
+            variant="explore"
+            parentUpdate={handleExploreUpdate}
+          />
         )}
       </div>
     </>

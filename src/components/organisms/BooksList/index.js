@@ -8,7 +8,7 @@ const BooksList = (props) => {
     <Grid container spacing={3}>
       {booksList.map((book) => (
         <BookCard
-          key={book.title}
+          key={book.id}
           bookInfo={book}
           variant={variant}
           parentUpdate={parentUpdate}

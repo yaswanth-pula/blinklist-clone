@@ -33,6 +33,7 @@ const useStyles = makeStyles({
   textColor: {
     fontSize: "1rem",
     color: "#6d787e",
+    borderBottom: "2px solid #6d787e",
   },
 });
 

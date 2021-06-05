@@ -51,7 +51,11 @@ const Library = () => {
       {isFetching ? (
         <h1>Loading....</h1>
       ) : (
-        <BooksList booksList={books} variant="library" />
+        <BooksList
+          booksList={books}
+          variant="library"
+          parentUpdate={renderTabBookList}
+        />
       )}
     </div>
   );

@@ -18,7 +18,10 @@ const useStyles = makeStyles({
     fontSize: "1.125rem",
     fontWeight: "700",
     lineHeight: "1.33",
+    maxHeight: "2.9925rem",
+    boxSizing: "inherit",
     overflow: "hidden",
+    wordWrap: "normal",
   },
   text_card_author: {
     fontSize: "1rem",

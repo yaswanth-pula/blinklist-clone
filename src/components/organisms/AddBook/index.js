@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "../../atoms/Link";
 import SelectField from "../../atoms/SelectField";
 import Button from "@material-ui/core/Button";
@@ -20,22 +20,34 @@ const useStyles = makeStyles({
 const AddBook = () => {
   const styles = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [freshBook, setFreshBook] = useState({
+    bookName: "",
+    author: "",
+    readTime: "",
+    url: "",
+  });
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
+    console.log(freshBook);
     setOpen(false);
+    setFreshBook({ bookName: "", author: "", readTime: "", url: "" });
   };
+
+  const handleInputChange = (event) => {
+    let fieldId = event.target.id;
+    let fieldValue = event.target.value;
+    setFreshBook((prev) => {
+      return { ...prev, [fieldId]: fieldValue };
+    });
+  };
+
   return (
     <>
-      <Link
-        // href="#"
-        text="Add Book"
-        variant="navLink"
-        clickHandler={handleClickOpen}
-      />
+      <Link text="Add Book" variant="navLink" clickHandler={handleClickOpen} />
       <Dialog
         classes={{ root: styles.root }}
         fullWidth
@@ -48,14 +60,39 @@ const AddBook = () => {
           <Text content="Add New Book" variant="text_form_header" />
         </DialogTitle>
         <DialogContent>
-          <FormInputField type="number" label="Title" />
-          <FormInputField label="Author" />
-          <FormInputField label="Cover Image Url" />
-          {/* <SelectField /> */}
+          <FormInputField
+            label="Title"
+            type="text"
+            id="bookName"
+            value={freshBook.bookName}
+            changeHandler={handleInputChange}
+          />
+          <FormInputField
+            label="Author"
+            type="text"
+            id="author"
+            value={freshBook.author}
+            changeHandler={handleInputChange}
+          />
+          <FormInputField
+            label="Cover Image Url"
+            type="url"
+            id="url"
+            value={freshBook.url}
+            changeHandler={handleInputChange}
+          />
         </DialogContent>
         <DialogActions>
-          <Link text="Cancel" variant="libraryCardButton" />
-          <Link text="Add New Book" variant="libraryCardButton" />
+          <Link
+            text="Cancel"
+            variant="libraryCardButton"
+            clickHandler={handleClose}
+          />
+          <Link
+            text="Add New Book"
+            variant="libraryCardButton"
+            clickHandler={handleClose}
+          />
         </DialogActions>
       </Dialog>
     </>

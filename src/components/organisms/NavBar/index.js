@@ -34,6 +34,7 @@ const useStyles = makeStyles({
 const NavBar = ({ parentUpdate }) => {
   const styles = useStyles();
   const handleNavClick = (event, child) => {
+    console.log(child);
     parentUpdate(child);
   };
   return (
@@ -44,7 +45,6 @@ const NavBar = ({ parentUpdate }) => {
       <div className={styles.mainLinks}>
         <ExploreMenu clickHandler={handleNavClick} />
         <Link
-          href="#"
           text="My Library"
           variant="navLink"
           clickHandler={handleNavClick}
@@ -53,7 +53,6 @@ const NavBar = ({ parentUpdate }) => {
       </div>
       <div className={styles.accountLink}>
         <Link
-          href="#"
           text="Account"
           variant="navLink"
           endIcon={<KeyboardArrowDownRoundedIcon />}

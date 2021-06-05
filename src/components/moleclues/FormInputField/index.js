@@ -13,13 +13,18 @@ const useStyles = makeStyles({
 });
 
 const FormInputField = (props) => {
-  const { label, value, changeHandler, type } = props;
+  const { id, label, value, changeHandler, type } = props;
   const styles = useStyles();
 
   return (
     <div className={styles.form_input}>
       <Text content={label} variant="text_input_label" />
-      <InputField type={type} value={value} changeHandler={changeHandler} />
+      <InputField
+        id={id}
+        type={type}
+        value={value}
+        changeHandler={changeHandler}
+      />
     </div>
   );
 };
