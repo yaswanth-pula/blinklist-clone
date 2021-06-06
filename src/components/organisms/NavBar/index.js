@@ -1,10 +1,11 @@
 import { makeStyles } from "@material-ui/core";
 import Link from "../../atoms/Link";
-import KeyboardArrowDownRoundedIcon from "@material-ui/icons/KeyboardArrowDownRounded";
+
 import AppLogo from "../../moleclues/AppLogo";
 import React from "react";
 import AddBook from "../AddBook";
 import ExploreMenu from "../ExploreMenu";
+import Account from "../Account";
 
 const useStyles = makeStyles({
   navbar: {
@@ -52,12 +53,7 @@ const NavBar = ({ parentUpdate }) => {
         <AddBook />
       </div>
       <div className={styles.accountLink}>
-        <Link
-          text="Account"
-          variant="navLink"
-          endIcon={<KeyboardArrowDownRoundedIcon />}
-          // clickHandler={handleLog}
-        />
+        <Account />
       </div>
     </div>
   );

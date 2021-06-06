@@ -2,5 +2,20 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import "./index.css";
+import { Auth0Provider } from "@auth0/auth0-react";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+// const authDomain = process.env.REACT_APP_AUTH0_DOMAIN;
+// const authClientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
+const authDomain = "dev-3m1i3vdf.us.auth0.com";
+const authClientId = "vLYccxQ1OTN1k4uzE2uXyPaETrZZPO6j";
+
+ReactDOM.render(
+  <Auth0Provider
+    domain={authDomain}
+    clientId={authClientId}
+    redirectUri={window.location.origin}
+  >
+    <App />
+  </Auth0Provider>,
+  document.getElementById("root")
+);
