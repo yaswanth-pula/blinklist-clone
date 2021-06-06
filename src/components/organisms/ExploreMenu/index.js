@@ -6,6 +6,7 @@ import Container from "@material-ui/core/Container";
 import { Divider, Grid, makeStyles } from "@material-ui/core";
 import KeyboardArrowDownRoundedIcon from "@material-ui/icons/KeyboardArrowDownRounded";
 import KeyboardArrowUpRoundedIcon from "@material-ui/icons/KeyboardArrowUpRounded";
+import { CATEGORIES } from "../../../utils/constant";
 
 const useStyles = makeStyles({
   menu: {
@@ -48,17 +49,17 @@ const ExploreMenu = ({ clickHandler }) => {
     handleClose();
     clickHandler(event, selectedCategory);
   };
-  const categories = [
-    "Entrepreneurship",
-    "Marketing & Sales",
-    "Health & Nutrition",
-    "Economics",
-    "Politics",
-    "Science",
-    "Personal Devlopment",
-    "History",
-    "Psychology",
-  ];
+  // const categories = [
+  //   "Entrepreneurship",
+  //   "Marketing & Sales",
+  //   "Health & Nutrition",
+  //   "Economics",
+  //   "Politics",
+  //   "Science",
+  //   "Personal Devlopment",
+  //   "History",
+  //   "Psychology",
+  // ];
   return (
     <>
       <Link
@@ -97,7 +98,7 @@ const ExploreMenu = ({ clickHandler }) => {
           <Text content="Explore by category" customClass={styles.header} />
           <Divider />
           <Grid container>
-            {categories.map((currentCategory) => {
+            {CATEGORIES.map((currentCategory) => {
               return (
                 <Grid item md={4} xs={6} key={currentCategory}>
                   <Link

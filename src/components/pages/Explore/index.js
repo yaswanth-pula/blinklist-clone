@@ -19,9 +19,9 @@ const Explore = ({ selectedCategory }) => {
   const [isFetching, setIsFetching] = useState(true);
   const [parentRender, setParentRender] = useState("");
 
-  const requestServer = (category) => {
-    let cat = escape(category);
-    let url = `http://localhost:3000/books?category=${cat}`;
+  const requestServer = (selectedCategory) => {
+    selectedCategory = escape(selectedCategory);
+    let url = `http://localhost:3000/books?category=${selectedCategory}`;
     setIsFetching(true);
     fetch(url)
       .then((res) => res.json())
@@ -38,8 +38,8 @@ const Explore = ({ selectedCategory }) => {
     requestServer(selectedCategory);
   }, [parentRender, selectedCategory]);
 
-  const handleExploreUpdate = () => {
-    setParentRender(Date.now());
+  const handleExploreUpdate = (value) => {
+    setParentRender(value);
   };
 
   return (

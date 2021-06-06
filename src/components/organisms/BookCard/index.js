@@ -13,6 +13,11 @@ import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import Link from "../../atoms/Link";
 import PropTypes from "prop-types";
+import {
+  BOOK_STATUS_FINISHED,
+  BOOK_STATUS_FRESH,
+  BOOK_STATUS_READING,
+} from "../../../utils/constant";
 
 const useStyles = makeStyles({
   root: {
@@ -62,11 +67,23 @@ const BookCard = (props) => {
 
   const handleUpdate = () => {
     let updatedStatus =
-      currentBookStatus === "reading" ? "finished" : "reading";
+      currentBookStatus === BOOK_STATUS_READING
+        ? BOOK_STATUS_FINISHED
+        : BOOK_STATUS_READING;
+
     updateBookStatus(currentBookId, updatedStatus);
-    if (currentBookStatus === "reading") parentUpdate(0);
-    if (currentBookStatus === "finished") parentUpdate(1);
-    if (currentBookStatus === "fresh") parentUpdate();
+
+    switch (currentBookStatus) {
+      case BOOK_STATUS_READING:
+        parentUpdate(0);
+        break;
+      case BOOK_STATUS_FINISHED:
+        parentUpdate(1);
+        break;
+      case BOOK_STATUS_FRESH:
+        parentUpdate(Date.now());
+        break;
+    }
   };
 
   return (
@@ -94,15 +111,15 @@ const BookCard = (props) => {
               textContent={`${bookInfo.readTime}-minute read`}
               icon={<AccessTimeIcon />}
             />
-            <CardStat
+            {/* <CardStat
               textContent={`${bookInfo.readersCount} reads`}
               icon={<PersonOutlineIcon />}
-            />
+            /> */}
           </div>
         </CardContent>
         {variant === "library" && (
           <CardActions className={styles.options}>
-            {bookInfo.status === "reading" ? (
+            {bookInfo.status === BOOK_STATUS_READING ? (
               <Link
                 text="Mark as done"
                 variant="libraryCardButton"
@@ -120,7 +137,7 @@ const BookCard = (props) => {
             </IconButton>
           </CardActions>
         )}
-        {variant === "explore" && bookInfo.status === "fresh" && (
+        {variant === "explore" && bookInfo.status === BOOK_STATUS_FRESH && (
           <Link
             text="+ Add to Library"
             variant="exploreCardButton"

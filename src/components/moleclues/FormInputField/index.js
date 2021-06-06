@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 });
 
 const FormInputField = (props) => {
-  const { id, label, value, changeHandler, type } = props;
+  const { id, label, value, changeHandler, type, placeholder } = props;
   const styles = useStyles();
 
   return (
@@ -24,6 +24,7 @@ const FormInputField = (props) => {
         type={type}
         value={value}
         changeHandler={changeHandler}
+        placeholder={placeholder}
       />
     </div>
   );

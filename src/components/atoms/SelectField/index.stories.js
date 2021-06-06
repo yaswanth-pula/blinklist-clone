@@ -6,3 +6,8 @@ export default {
 };
 
 export const Default = (args) => <SelectField {...args} />;
+
+Default.args = {
+  value: "",
+  options: ["Science", "History", "Econmics", "Health & Nutrition"],
+};

@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 });
 
 const InputField = (props) => {
-  const { id, type, value, changeHandler } = props;
+  const { id, type, value, changeHandler, placeholder } = props;
   const styles = useStyles();
   return (
     <div className={styles.fieldContainer}>
@@ -37,6 +37,8 @@ const InputField = (props) => {
         className={styles.field}
         value={value}
         onChange={(event) => changeHandler(event)}
+        autoComplete="off"
+        placeholder={placeholder}
       />
     </div>
   );

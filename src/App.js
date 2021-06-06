@@ -16,7 +16,7 @@ const App = () => {
   return (
     <Container maxWidth="md">
       <NavBar parentUpdate={navClickUpdate} />
-      {/* {toggle ? <Library /> : <Explore selectedCategory={exploreCategory} />} */}
+      {toggle ? <Library /> : <Explore selectedCategory={exploreCategory} />}
     </Container>
   );
 };

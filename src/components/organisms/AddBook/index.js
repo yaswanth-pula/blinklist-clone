@@ -9,12 +9,17 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Text from "../../atoms/Text";
 import FormInputField from "../../moleclues/FormInputField";
 import { makeStyles } from "@material-ui/core";
+import { BOOK_STATUS_FRESH, CATEGORIES } from "../../../utils/constant";
 
 const useStyles = makeStyles({
   root: {
     fontFamily: `"CeraPRO-Regular", -apple-system, BlinkMacSystemFont, "Segoe UI",
       "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
       "Helvetica Neue", sans-serif`,
+  },
+  actionRoot: {
+    paddingBottom: "2em",
+    paddingRight: "1.5em",
   },
 });
 const AddBook = () => {
@@ -25,6 +30,7 @@ const AddBook = () => {
     author: "",
     readTime: "",
     url: "",
+    category: "",
   });
 
   const handleClickOpen = () => {
@@ -32,9 +38,32 @@ const AddBook = () => {
   };
 
   const handleClose = () => {
-    console.log(freshBook);
     setOpen(false);
-    setFreshBook({ bookName: "", author: "", readTime: "", url: "" });
+    setFreshBook({
+      bookName: "",
+      author: "",
+      readTime: "",
+      url: "",
+      category: "",
+    });
+  };
+  const handleAddNewBook = () => {
+    const url = `http://localhost:3000/books/`;
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: Date.now(),
+        status: BOOK_STATUS_FRESH,
+        ...freshBook,
+      }),
+    }).catch((err) => {
+      console.log(err);
+    });
+    handleClose();
   };
 
   const handleInputChange = (event) => {
@@ -81,8 +110,21 @@ const AddBook = () => {
             value={freshBook.url}
             changeHandler={handleInputChange}
           />
+          <FormInputField
+            label="Book Read Time"
+            type="number"
+            id="readTime"
+            value={freshBook.readTime}
+            changeHandler={handleInputChange}
+          />
+          <SelectField
+            id="category"
+            options={CATEGORIES}
+            value={freshBook.category}
+            changeHandler={handleInputChange}
+          />
         </DialogContent>
-        <DialogActions>
+        <DialogActions className={styles.actionRoot}>
           <Link
             text="Cancel"
             variant="libraryCardButton"
@@ -91,7 +133,7 @@ const AddBook = () => {
           <Link
             text="Add New Book"
             variant="libraryCardButton"
-            clickHandler={handleClose}
+            clickHandler={handleAddNewBook}
           />
         </DialogActions>
       </Dialog>
