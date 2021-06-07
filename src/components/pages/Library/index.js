@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Text from "../../atoms/Text";
-import BooksList from "../../organisms/BooksList";
+import BooksList from "../../Templates/BooksList";
 import LibraryTabs from "../../organisms/LibraryTabs";
 
 const useStyles = makeStyles({

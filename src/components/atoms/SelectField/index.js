@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
+import Text from "../../atoms/Text";
 
 const useStyles = makeStyles({
   form_input: {
@@ -29,7 +30,14 @@ const useStyles = makeStyles({
   },
 });
 
-const SelectField = ({ id, value, changeHandler, options }) => {
+const SelectField = ({
+  id,
+  value,
+  changeHandler,
+  options,
+  isError,
+  errorText,
+}) => {
   const styles = useStyles();
   return (
     <div className={styles.form_input}>
@@ -50,6 +58,7 @@ const SelectField = ({ id, value, changeHandler, options }) => {
           );
         })}
       </select>
+      {isError && <Text content={errorText} variant="text_input_error" />}
     </div>
   );
 };

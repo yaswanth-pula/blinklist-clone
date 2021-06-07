@@ -19,9 +19,8 @@ const useStyles = makeStyles({
     },
   },
 });
-const CardStat = (props) => {
+const CardStat = ({ textContent, icon }) => {
   const styles = useStyles();
-  const { textContent, icon } = props;
   return (
     <div className={styles.root}>
       <span className={styles.icon}>{icon}</span>

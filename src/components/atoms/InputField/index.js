@@ -26,18 +26,26 @@ const useStyles = makeStyles({
   },
 });
 
-const InputField = (props) => {
-  const { id, type, value, changeHandler, placeholder } = props;
+const InputField = ({
+  id,
+  type,
+  value,
+  changeHandler,
+  maxLength,
+  customClass,
+  placeholder,
+}) => {
   const styles = useStyles();
   return (
     <div className={styles.fieldContainer}>
       <input
         id={id}
         type={type}
-        className={styles.field}
+        className={`${styles.field} ${customClass}`}
         value={value}
         onChange={(event) => changeHandler(event)}
         autoComplete="off"
+        maxLength={maxLength}
         placeholder={placeholder}
       />
     </div>

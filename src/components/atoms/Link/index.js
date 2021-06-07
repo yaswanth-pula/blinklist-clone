@@ -55,8 +55,7 @@ const useStyles = makeStyles({
     },
   },
 });
-const Link = (props) => {
-  const { href, text, endIcon, clickHandler, variant, customClass } = props;
+const Link = ({ href, text, endIcon, clickHandler, variant, customClass }) => {
   const styles = useStyles();
   const variantStyle = styles[variant];
   return (

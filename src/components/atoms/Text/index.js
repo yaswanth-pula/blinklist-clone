@@ -18,16 +18,18 @@ const useStyles = makeStyles({
     fontSize: "1.125rem",
     fontWeight: "700",
     lineHeight: "1.33",
-    maxHeight: "2.9925rem",
+    whiteSpace: "nowrap",
     boxSizing: "inherit",
     overflow: "hidden",
-    wordWrap: "normal",
+    textOverflow: "ellipsis",
   },
   text_card_author: {
     fontSize: "1rem",
     fontWeight: "500",
     lineHeight: "1.5",
     color: "#6d787e",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
   },
   text_card_stat: {
     fontSize: "0.875rem",
@@ -44,6 +46,10 @@ const useStyles = makeStyles({
     display: "block",
     marginBottom: ".5rem",
   },
+  text_input_error: {
+    color: "#ff445d",
+    marginTop: ".25em",
+  },
   text_form_header: {
     fontFamily: "inherit",
     fontSize: "1.5rem",
@@ -53,9 +59,8 @@ const useStyles = makeStyles({
   },
 });
 
-const Text = (props) => {
+const Text = ({ content, variant, customClass }) => {
   const styles = useStyles();
-  const { content, variant, customClass } = props;
   const variantStyle = styles[variant];
   return (
     <span
@@ -72,11 +77,6 @@ Text.propTypes = {
   content: PropTypes.string.isRequired,
   variant: PropTypes.string,
   customClass: PropTypes.string,
-};
-Text.defaultProps = {
-  content: "Empty String",
-  variant: "",
-  customClass: null,
 };
 
 export default Text;

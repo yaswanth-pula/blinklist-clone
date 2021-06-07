@@ -2,8 +2,7 @@ import React from "react";
 import BookCard from "../../organisms/BookCard";
 import Grid from "@material-ui/core/Grid";
 
-const BooksList = (props) => {
-  const { booksList, parentUpdate, variant } = props;
+const BooksList = ({ booksList, parentUpdate, variant }) => {
   return (
     <Grid container spacing={3}>
       {booksList.map((book) => (

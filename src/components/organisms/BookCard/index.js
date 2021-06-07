@@ -18,6 +18,7 @@ import {
   BOOK_STATUS_FRESH,
   BOOK_STATUS_READING,
 } from "../../../utils/constant";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const useStyles = makeStyles({
   root: {

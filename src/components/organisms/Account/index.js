@@ -14,11 +14,9 @@ const Account = () => {
     logout();
   };
 
-  console.log(user);
-  //   116108022397484757136
   return isAuthenticated ? (
     <Link
-      text={user.given_name}
+      text={`${user.name}(Logout)`}
       variant="navLink"
       endIcon={<KeyboardArrowDownRoundedIcon />}
       clickHandler={handleLogout}

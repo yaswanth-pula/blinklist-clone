@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Text from "../../atoms/Text";
-import BooksList from "../../organisms/BooksList";
+import BooksList from "../../Templates/BooksList";
 
 const useStyles = makeStyles({
   root: {
@@ -21,7 +21,7 @@ const Explore = ({ selectedCategory }) => {
 
   const requestServer = (selectedCategory) => {
     selectedCategory = escape(selectedCategory);
-    let url = `http://localhost:3000/books?category=${selectedCategory}`;
+    let url = `http://localhost:3000/books?category_like=${selectedCategory}`;
     setIsFetching(true);
     fetch(url)
       .then((res) => res.json())
@@ -46,7 +46,10 @@ const Explore = ({ selectedCategory }) => {
     <>
       <div className={styles.root}>
         <div className={styles.header}>
-          <Text content="Explore" variant="text_header" />
+          <Text
+            content={selectedCategory === "" ? "All" : selectedCategory}
+            variant="text_header"
+          />
         </div>
         {isFetching ? (
           <h1>Loading....</h1>

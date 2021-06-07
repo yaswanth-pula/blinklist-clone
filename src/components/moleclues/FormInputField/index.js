@@ -12,20 +12,14 @@ const useStyles = makeStyles({
   },
 });
 
-const FormInputField = (props) => {
-  const { id, label, value, changeHandler, type, placeholder } = props;
+const FormInputField = ({ label, isError, errorText, ...args }) => {
   const styles = useStyles();
 
   return (
     <div className={styles.form_input}>
       <Text content={label} variant="text_input_label" />
-      <InputField
-        id={id}
-        type={type}
-        value={value}
-        changeHandler={changeHandler}
-        placeholder={placeholder}
-      />
+      <InputField {...args} />
+      {isError && <Text content={errorText} variant="text_input_error" />}
     </div>
   );
 };
