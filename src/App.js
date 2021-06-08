@@ -4,26 +4,31 @@ import NavBar from "./components/organisms/NavBar";
 import Library from "./components/pages/Library";
 import Explore from "./components/pages/Explore";
 import SearchBar from "./components/organisms/SearchBar";
+import SearchResult from "./components/pages/SearchResults";
 
 const App = () => {
   const [toggle, setToggle] = useState(true);
   const [exploreCategory, setExploreCategory] = useState("");
-  const [showNavBar, setShowNavBar] = useState(false);
+  const [showSearchBar, setShowSearchBar] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const navClickUpdate = (clickedItem) => {
     setExploreCategory(clickedItem);
     setToggle(clickedItem === "My Library");
   };
   const searchClickUpdate = (clickedItem) => {
-    setShowNavBar(clickedItem === "Search");
+    setShowSearchBar(clickedItem === "Search");
+  };
+  const searchQueryUpdate = (inputQuery) => {
+    setSearchQuery(inputQuery);
   };
 
   return (
     <Container maxWidth="md">
-      {showNavBar ? (
+      {showSearchBar ? (
         <SearchBar
-          parentUpdate={navClickUpdate}
           searchUpdate={searchClickUpdate}
+          queryUpdate={searchQueryUpdate}
         />
       ) : (
         <NavBar
@@ -31,7 +36,14 @@ const App = () => {
           searchUpdate={searchClickUpdate}
         />
       )}
-      {toggle ? <Library /> : <Explore selectedCategory={exploreCategory} />}
+
+      {showSearchBar ? (
+        <SearchResult query={searchQuery} />
+      ) : toggle ? (
+        <Library />
+      ) : (
+        <Explore selectedCategory={exploreCategory} />
+      )}
     </Container>
   );
 };

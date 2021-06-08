@@ -1,5 +1,5 @@
 import { IconButton, makeStyles } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 import InputField from "../../atoms/InputField";
 import CloseIcon from "@material-ui/icons/Close";
 import AppLogo from "../../moleclues/AppLogo";
@@ -35,11 +35,16 @@ const useStyles = makeStyles({
     marginLeft: "0.125em",
   },
 });
-const SearchBar = ({ searchUpdate }) => {
+const SearchBar = ({ searchUpdate, queryUpdate }) => {
   const styles = useStyles();
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearchClose = () => {
-    searchUpdate("Close");
+    searchUpdate("quit");
+  };
+  const handleSearchBarInput = (event) => {
+    setSearchQuery(event.target.value);
+    queryUpdate(event.target.value);
   };
 
   return (
@@ -54,6 +59,8 @@ const SearchBar = ({ searchUpdate }) => {
           type="text"
           customClass={styles.searchInput}
           placeholder="Search for titles and authors"
+          value={searchQuery}
+          changeHandler={handleSearchBarInput}
         />
         <AppIconButton
           children={<CloseIcon />}

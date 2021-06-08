@@ -49,17 +49,6 @@ const ExploreMenu = ({ clickHandler }) => {
     handleClose();
     clickHandler(event, selectedCategory);
   };
-  // const categories = [
-  //   "Entrepreneurship",
-  //   "Marketing & Sales",
-  //   "Health & Nutrition",
-  //   "Economics",
-  //   "Politics",
-  //   "Science",
-  //   "Personal Devlopment",
-  //   "History",
-  //   "Psychology",
-  // ];
   return (
     <>
       <Link
