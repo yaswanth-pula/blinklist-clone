@@ -3,6 +3,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import Text from "../../atoms/Text";
 import BooksList from "../../Templates/BooksList";
 import LibraryTabs from "../../organisms/LibraryTabs";
+import {
+  API_ENDPOINT_URL,
+  BOOK_STATUS_READING,
+  BOOK_STATUS_FINISHED,
+} from "../../../utils/config";
 
 const useStyles = makeStyles({
   root: {
@@ -21,7 +26,7 @@ const Library = () => {
   const [isFetching, setIsFetching] = useState(true);
 
   const requestServer = (param) => {
-    let url = `http://localhost:3000/books?status=${param}`;
+    let url = `${API_ENDPOINT_URL}?status=${param}`;
 
     fetch(url)
       .then((res) => res.json())
@@ -39,7 +44,9 @@ const Library = () => {
   }, []);
 
   const renderTabBookList = (tabId) => {
-    tabId ? requestServer("finished") : requestServer("reading");
+    tabId
+      ? requestServer(BOOK_STATUS_FINISHED)
+      : requestServer(BOOK_STATUS_READING);
   };
 
   return (

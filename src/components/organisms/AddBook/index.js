@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "../../atoms/Link";
 import SelectField from "../../atoms/SelectField";
 import Dialog from "@material-ui/core/Dialog";
@@ -6,9 +6,10 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import Text from "../../atoms/Text";
 import FormInputField from "../../moleclues/FormInputField";
-import { DialogContentText, IconButton, makeStyles } from "@material-ui/core";
-import { BOOK_STATUS_FRESH, CATEGORIES } from "../../../utils/constant";
+import { makeStyles } from "@material-ui/core/styles";
+import { BOOK_STATUS_FRESH, CATEGORIES } from "../../../utils/config";
 import CloseIcon from "@material-ui/icons/Close";
+import AppIconButton from "../../moleclues/AppIconButton";
 import {
   checkForEmptyValue,
   checkReadTime,
@@ -23,11 +24,22 @@ const useStyles = makeStyles({
   },
   actionRoot: {
     paddingBottom: "2em",
-    paddingRight: "1.5em",
+    paddingRight: "2.5em",
   },
-  closeButton: {
+  headerSection: {
     display: "flex",
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  disabledButton: {
+    pointerEvents: "none",
+    color: "#6d787e",
+    borderColor: "#bac8ce",
+  },
+  cancelButton: {
+    "&:hover": {
+      color: "#0365F2",
+    },
   },
 });
 const AddBook = () => {
@@ -40,8 +52,21 @@ const AddBook = () => {
     url: "",
     category: "",
   };
+  const emptyErrorBook = {
+    title: { isError: true, errorMessage: "" },
+    author: { isError: true, errorMessage: "" },
+    readTime: { isError: true, errorMessage: "" },
+    url: { isError: true, errorMessage: "" },
+    category: { isError: true, errorMessage: "" },
+  };
   const [freshBook, setFreshBook] = useState(emptyBook);
-  const [bookFieldError, setBookFieldError] = useState(emptyBook);
+  const [bookFieldError, setBookFieldError] = useState(emptyErrorBook);
+  const [formErrorStatus, setFormErrorStatus] = useState(true);
+
+  useEffect(() => {
+    let currentErrorStatus = isFieldsWithError();
+    setFormErrorStatus(currentErrorStatus);
+  }, [bookFieldError]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -50,7 +75,7 @@ const AddBook = () => {
   const handleClose = () => {
     setOpen(false);
     setFreshBook(emptyBook);
-    setBookFieldError(emptyBook);
+    setBookFieldError(emptyErrorBook);
   };
   const postFreshBook = () => {
     const url = `http://localhost:3000/books`;
@@ -72,27 +97,16 @@ const AddBook = () => {
   };
 
   const handleAddNewBook = () => {
-    console.log(isFieldsWithError());
-    if (isFieldsWithError()) return;
     postFreshBook();
   };
 
   const isFieldsWithError = () => {
-    setBookFieldError({
-      title: checkForEmptyValue(freshBook.title),
-      author: checkForEmptyValue(freshBook.author),
-      category: checkForEmptyValue(freshBook.category),
-      url: checkValidUrl(freshBook.url),
-      readTime: checkReadTime(freshBook.readTime),
-    });
-
     let validationResult =
       bookFieldError.author.isError ||
       bookFieldError.title.isError ||
       bookFieldError.readTime.isError ||
       bookFieldError.url.isError ||
       bookFieldError.category.isError;
-    if (validationResult === undefined) return true;
     return validationResult;
   };
 
@@ -139,14 +153,15 @@ const AddBook = () => {
         aria-labelledby="form-dialog-title"
       >
         <DialogContent>
-          <div className={styles.closeButton}>
-            <IconButton onClick={() => handleClose()}>
-              <CloseIcon />
-            </IconButton>
-          </div>
-          <DialogContentText>
+          <div className={styles.headerSection}>
             <Text content="Add New Book" variant="text_form_header" />
-          </DialogContentText>
+            <AppIconButton
+              children={<CloseIcon />}
+              clickHandler={handleClose}
+              customClass={styles.cancelButton}
+            />
+          </div>
+
           <FormInputField
             label="Title"
             type="text"
@@ -197,13 +212,14 @@ const AddBook = () => {
         <DialogActions className={styles.actionRoot}>
           <Link
             text="Cancel"
-            // variant="libraryCardButton"
+            customClass={styles.cancelButton}
             clickHandler={handleClose}
           />
           <Link
             text="Add New Book"
             variant="libraryCardButton"
             clickHandler={handleAddNewBook}
+            customClass={formErrorStatus ? styles.disabledButton : ""}
           />
         </DialogActions>
       </Dialog>

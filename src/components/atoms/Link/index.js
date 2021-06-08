@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/core";
-import { Height } from "@material-ui/icons";
 import PropTypes from "prop-types";
 import React from "react";
 const useStyles = makeStyles({
@@ -63,6 +62,7 @@ const Link = ({ href, text, endIcon, clickHandler, variant, customClass }) => {
       href={href}
       className={[`${styles.root}`, `${variantStyle}`, customClass].join(" ")}
       onClick={clickHandler ? (event) => clickHandler(event, text) : null}
+      disabled
     >
       {text}
       <span>{endIcon}</span>
@@ -74,15 +74,7 @@ Link.propTypes = {
   href: PropTypes.string,
   text: PropTypes.string.isRequired,
   endIcon: PropTypes.element,
-  // clickHandler: PropTypes.func,
   variant: PropTypes.string,
-};
-
-Link.defaultProps = {
-  href: null,
-  endIcon: null,
-  // clickHandler: null,
-  variant: null,
 };
 
 export default Link;

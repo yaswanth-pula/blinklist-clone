@@ -13,3 +13,5 @@ export const CATEGORIES = [
 export const BOOK_STATUS_READING = "reading";
 export const BOOK_STATUS_FINISHED = "finished";
 export const BOOK_STATUS_FRESH = "fresh";
+
+export const API_ENDPOINT_URL = "http://localhost:3000/books";

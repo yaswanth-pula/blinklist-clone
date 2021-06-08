@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Text from "../../atoms/Text";
 import BooksList from "../../Templates/BooksList";
+import { API_ENDPOINT_URL } from "../../../utils/config";
 
 const useStyles = makeStyles({
   root: {
@@ -16,28 +17,41 @@ const useStyles = makeStyles({
 const SearchResult = ({ query }) => {
   const styles = useStyles();
   const [books, setBooks] = useState([]);
+  const [isFetching, setIsFetching] = useState(true);
+  const [filteredBooks, setFilteredBooks] = useState([]);
   const [parentRender, setParentRender] = useState("");
 
-  const requestServer = (query) => {
-    if (query.trim() === "") {
-      setBooks([]);
-      return;
-    }
-    query = escape("^" + query);
-    let url = `http://localhost:3000/books?title_like=${query}`;
-    setBooks([]);
+  const requestServer = () => {
+    let url = API_ENDPOINT_URL;
     fetch(url)
       .then((res) => res.json())
       .then((result) => {
         setBooks(result);
+        setIsFetching(false);
       })
       .catch((error) => {
+        setIsFetching(false);
         console.log(error);
       });
   };
+
+  const filterBooks = (query) => {
+    query = query.toLowerCase();
+    let filterBooks = books.filter(
+      (book) =>
+        book.title.toLowerCase().includes(query) ||
+        book.author.toLowerCase().includes(query)
+    );
+    setFilteredBooks(filterBooks);
+  };
+
   useEffect(() => {
-    requestServer(query.trim());
-  }, [query, parentRender]);
+    requestServer();
+  }, [parentRender]);
+
+  useEffect(() => {
+    if (!isFetching) filterBooks(query);
+  }, [query, isFetching, parentRender]);
 
   const handleExploreUpdate = (value) => {
     setParentRender(value);
@@ -47,11 +61,14 @@ const SearchResult = ({ query }) => {
       <div className={styles.header}>
         <Text content="Search Results" variant="text_header" />
       </div>
-      {query.trim() !== "" && books.length === 0 ? (
-        <h1>No Results Found.Please Try Different Search term</h1>
+      {filteredBooks.length === 0 ? (
+        <Text
+          variant="text_card_title"
+          content="No Results Found. Please Try Different Search term"
+        />
       ) : (
         <BooksList
-          booksList={books}
+          booksList={filteredBooks}
           variant="explore"
           parentUpdate={handleExploreUpdate}
         />

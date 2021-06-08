@@ -7,18 +7,17 @@ import CardActions from "@material-ui/core/CardActions";
 import Text from "../../atoms/Text";
 import CardStat from "../../moleclues/CardStat";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import Link from "../../atoms/Link";
+import AppIconButton from "../../moleclues/AppIconButton";
 import PropTypes from "prop-types";
 import {
   BOOK_STATUS_FINISHED,
   BOOK_STATUS_FRESH,
   BOOK_STATUS_READING,
-} from "../../../utils/constant";
-import { useAuth0 } from "@auth0/auth0-react";
+  API_ENDPOINT_URL,
+} from "../../../utils/config";
 
 const useStyles = makeStyles({
   root: {
@@ -46,14 +45,13 @@ const useStyles = makeStyles({
   },
 });
 
-const BookCard = (props) => {
+const BookCard = ({ bookInfo, variant, parentUpdate }) => {
   const styles = useStyles();
-  const { bookInfo, variant, parentUpdate } = props;
   const currentBookId = bookInfo.id;
   const currentBookStatus = bookInfo.status;
 
   const updateBookStatus = (bookId, updatedStatus) => {
-    const url = `http://localhost:3000/books/${bookId}`;
+    const url = `${API_ENDPOINT_URL}/${bookId}`;
 
     fetch(url, {
       method: "PATCH",
@@ -112,10 +110,6 @@ const BookCard = (props) => {
               textContent={`${bookInfo.readTime}-minute read`}
               icon={<AccessTimeIcon />}
             />
-            {/* <CardStat
-              textContent={`${bookInfo.readersCount} reads`}
-              icon={<PersonOutlineIcon />}
-            /> */}
           </div>
         </CardContent>
         {variant === "library" && (
@@ -133,9 +127,7 @@ const BookCard = (props) => {
                 clickHandler={handleUpdate}
               />
             )}
-            <IconButton>
-              <MoreHorizIcon />
-            </IconButton>
+            <AppIconButton children={<MoreHorizIcon />} />
           </CardActions>
         )}
         {variant === "explore" && bookInfo.status === BOOK_STATUS_FRESH && (

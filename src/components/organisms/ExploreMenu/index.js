@@ -6,7 +6,7 @@ import Container from "@material-ui/core/Container";
 import { Divider, Grid, makeStyles } from "@material-ui/core";
 import KeyboardArrowDownRoundedIcon from "@material-ui/icons/KeyboardArrowDownRounded";
 import KeyboardArrowUpRoundedIcon from "@material-ui/icons/KeyboardArrowUpRounded";
-import { CATEGORIES } from "../../../utils/constant";
+import { CATEGORIES } from "../../../utils/config";
 
 const useStyles = makeStyles({
   menu: {

@@ -5,6 +5,7 @@ import Library from "./components/pages/Library";
 import Explore from "./components/pages/Explore";
 import SearchBar from "./components/organisms/SearchBar";
 import SearchResult from "./components/pages/SearchResults";
+import { isEmptyString } from "./utils/validator";
 
 const App = () => {
   const [toggle, setToggle] = useState(true);
@@ -20,7 +21,7 @@ const App = () => {
     setShowSearchBar(clickedItem === "Search");
   };
   const searchQueryUpdate = (inputQuery) => {
-    setSearchQuery(inputQuery);
+    setSearchQuery(inputQuery.trim());
   };
 
   return (
@@ -37,7 +38,7 @@ const App = () => {
         />
       )}
 
-      {showSearchBar ? (
+      {showSearchBar && !isEmptyString(searchQuery) ? (
         <SearchResult query={searchQuery} />
       ) : toggle ? (
         <Library />
