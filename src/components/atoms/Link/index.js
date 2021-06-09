@@ -62,7 +62,6 @@ const Link = ({ href, text, endIcon, clickHandler, variant, customClass }) => {
       href={href}
       className={[`${styles.root}`, `${variantStyle}`, customClass].join(" ")}
       onClick={clickHandler ? (event) => clickHandler(event, text) : null}
-      disabled
     >
       {text}
       <span>{endIcon}</span>

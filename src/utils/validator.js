@@ -5,34 +5,32 @@ export const isEmptyString = (currentString) => {
 };
 
 export const checkForEmptyValue = (currentString) => {
-  let errorMessage = "cannot be empty";
-  if (isEmptyString(currentString))
-    return { isError: true, errorMessage: errorMessage };
+  if (isEmptyString(currentString.trim()))
+    return { isError: true, errorMessage: "cannot be empty" };
 
   return noErrorObject;
 };
 
 export const checkReadTime = (currentTime) => {
+  currentTime = currentTime.trim();
   let emptyCheck = checkForEmptyValue(currentTime);
   if (emptyCheck.isError) return emptyCheck;
 
-  let errorMessage = "cannot be greater than 60 Minutes";
   if (Number(currentTime) > 60)
-    return { isError: true, errorMessage: errorMessage };
-  errorMessage = "Cannot be Less than 1 Minute";
+    return { isError: true, errorMessage: "cannot be greater than 60 Minutes" };
+
   if (Number(currentTime) <= 0)
-    return { isError: true, errorMessage: errorMessage };
+    return { isError: true, errorMessage: "cannot be Less than 1 Minute" };
 
   return noErrorObject;
 };
 
 export const checkValidUrl = (currentUrl) => {
+  currentUrl = currentUrl.trim();
   let emptyCheck = checkForEmptyValue(currentUrl);
   if (emptyCheck.isError) return emptyCheck;
-
-  let errorMessage = "invalid url";
   if (!(currentUrl.startsWith("http://") || currentUrl.startsWith("https://")))
-    return { isError: true, errorMessage: errorMessage };
+    return { isError: true, errorMessage: "invalid url" };
 
   return noErrorObject;
 };
