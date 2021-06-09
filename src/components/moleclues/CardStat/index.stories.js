@@ -1,5 +1,4 @@
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import CardStat from "./";
 
 export default {
@@ -13,10 +12,4 @@ export const BookReadTime = Template.bind({});
 BookReadTime.args = {
   textContent: "15 Minutes Read",
   icon: <AccessTimeIcon />,
-};
-
-export const BookReaderCount = Template.bind({});
-BookReaderCount.args = {
-  textContent: "2.3k reads",
-  icon: <PersonOutlineIcon />,
 };

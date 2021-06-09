@@ -60,7 +60,7 @@ ExploreBookCard.args = {
     readersCount: "2.1k",
     url:
       "https://images.blinkist.com/images/books/5f90514d6cee07000608d799/1_1/250.jpg",
-    status: "finished",
+    status: "fresh",
   },
   variant: "explore",
 };

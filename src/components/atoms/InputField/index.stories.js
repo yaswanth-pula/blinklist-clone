@@ -5,12 +5,16 @@ export default {
   component: InputField,
 };
 
-export const Default = (args) => <InputField {...args} />;
+const Template = (args) => <InputField {...args} />;
 
-Default.args = {
+export const TextInputField = Template.bind({});
+TextInputField.args = {
   type: "text",
   value: "",
-  changeHandler: null,
 };
 
-export const Number = (args) => <InputField {...args} />;
+export const NumberInputField = Template.bind({});
+NumberInputField.args = {
+  type: "number",
+  value: "",
+};

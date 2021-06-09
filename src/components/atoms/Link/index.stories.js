@@ -7,13 +7,12 @@ export default {
 
 const Template = (args) => <Link {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Default = Template.bind({});
+Default.args = {
   text: "My Library",
   href: "#",
   variant: "navLink",
 };
-Primary.storyname = "Simple Link";
 
 export const WithIcon = Template.bind({});
 WithIcon.args = {
