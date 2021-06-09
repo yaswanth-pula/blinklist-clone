@@ -37,9 +37,7 @@ const useStyles = makeStyles({
   },
 });
 
-const LibraryTabs = (props) => {
-  const { informParent } = props;
-
+const LibraryTabs = ({ informParent }) => {
   const [tabValue, setTabValue] = useState(0);
   const handleTabChange = (event, selectedTab) => {
     setTabValue(selectedTab);

@@ -1,8 +1,6 @@
 import React from "react";
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import InputField from "./";
-
-afterEach(cleanup);
 
 describe("Atoms > InputField", () => {
   test("Renders Input Field Component", () => {
@@ -16,7 +14,6 @@ describe("Atoms > InputField", () => {
     render(<InputField type="number" />);
 
     const numInputEle = screen.getByRole("spinbutton");
-
     expect(numInputEle).toHaveAttribute("type", "number");
   });
 
@@ -29,6 +26,7 @@ describe("Atoms > InputField", () => {
     fireEvent.change(textInputEle, {
       target: { value: "test string" },
     });
+
     expect(changeHandler).toHaveBeenCalledTimes(1);
     expect(textInputEle).toHaveValue("test string");
   });
