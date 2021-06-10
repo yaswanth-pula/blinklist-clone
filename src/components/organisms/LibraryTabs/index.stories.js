@@ -5,4 +5,4 @@ export default {
   component: LibraryTabs,
 };
 
-export const Default = (args) => <LibraryTabs {...args} />;
+export const Default = () => <LibraryTabs informParent={() => {}} />;
