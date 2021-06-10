@@ -24,6 +24,14 @@ const App = () => {
     setSearchQuery(inputQuery.trim());
   };
 
+  const renderMainContent = () => {
+    return toggle ? (
+      <Library />
+    ) : (
+      <Explore selectedCategory={exploreCategory} />
+    );
+  };
+
   return (
     <Container maxWidth="md">
       {showSearchBar ? (
@@ -37,13 +45,10 @@ const App = () => {
           searchUpdate={searchClickUpdate}
         />
       )}
-
       {showSearchBar && !isEmptyString(searchQuery) ? (
         <SearchResult query={searchQuery} />
-      ) : toggle ? (
-        <Library />
       ) : (
-        <Explore selectedCategory={exploreCategory} />
+        renderMainContent()
       )}
     </Container>
   );

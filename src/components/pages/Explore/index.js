@@ -20,9 +20,9 @@ const Explore = ({ selectedCategory }) => {
   const [isFetching, setIsFetching] = useState(true);
   const [parentRender, setParentRender] = useState("");
 
-  const requestServer = (selectedCategory) => {
-    selectedCategory = escape(selectedCategory);
-    let url = `${API_ENDPOINT_URL}?category_like=${selectedCategory}`;
+  const requestServer = (currentCategory) => {
+    currentCategory = escape(currentCategory);
+    let url = `${API_ENDPOINT_URL}?category_like=${currentCategory}`;
     setIsFetching(true);
     fetch(url)
       .then((res) => res.json())

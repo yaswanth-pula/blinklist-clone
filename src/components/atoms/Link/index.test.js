@@ -9,9 +9,7 @@ describe("Link", () => {
   });
 
   test("Can handle click", () => {
-    const clickHandler = jest.fn(() => {
-      // console.log("link clicked");
-    });
+    const clickHandler = jest.fn();
     render(<Link text="test-link" clickHandler={clickHandler} />);
     const testLinkEle = screen.getByText("test-link");
 

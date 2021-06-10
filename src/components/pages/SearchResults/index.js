@@ -35,14 +35,14 @@ const SearchResult = ({ query }) => {
       });
   };
 
-  const filterBooks = (query) => {
+  const filterBooks = () => {
     query = query.toLowerCase();
-    let filterBooks = books.filter(
+    let currentSearchResults = books.filter(
       (book) =>
         book.title.toLowerCase().includes(query) ||
         book.author.toLowerCase().includes(query)
     );
-    setFilteredBooks(filterBooks);
+    setFilteredBooks(currentSearchResults);
   };
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const SearchResult = ({ query }) => {
   }, [parentRender]);
 
   useEffect(() => {
-    if (!isFetching) filterBooks(query);
+    if (!isFetching) filterBooks();
   }, [query, isFetching, parentRender]);
 
   const handleExploreUpdate = (value) => {
