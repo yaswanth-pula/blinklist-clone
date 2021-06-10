@@ -101,13 +101,13 @@ const AddBook = () => {
   };
 
   const isFieldsWithError = () => {
-    let validationResult =
+    return (
       bookFieldError.author.isError ||
       bookFieldError.title.isError ||
       bookFieldError.readTime.isError ||
       bookFieldError.url.isError ||
-      bookFieldError.category.isError;
-    return validationResult;
+      bookFieldError.category.isError
+    );
   };
 
   const validateFieldsOnChange = (fieldId, fieldValue) => {

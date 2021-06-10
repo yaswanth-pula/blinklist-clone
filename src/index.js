@@ -4,8 +4,6 @@ import App from "./App";
 import "./index.css";
 import { Auth0Provider } from "@auth0/auth0-react";
 
-// const authDomain = process.env.REACT_APP_AUTH0_DOMAIN;
-// const authClientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
 const authDomain = "dev-3m1i3vdf.us.auth0.com";
 const authClientId = "vLYccxQ1OTN1k4uzE2uXyPaETrZZPO6j";
 

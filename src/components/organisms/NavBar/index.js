@@ -1,6 +1,5 @@
-import { IconButton, makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import Link from "../../atoms/Link";
-
 import AppLogo from "../../moleclues/AppLogo";
 import React from "react";
 import AddBook from "../AddBook";
@@ -47,7 +46,6 @@ const NavBar = ({ parentUpdate, searchUpdate }) => {
   const styles = useStyles();
   const { isAuthenticated } = useAuth0();
   const handleNavClick = (event, child) => {
-    console.log(child);
     parentUpdate(child);
   };
   const handleSearchClick = () => {
