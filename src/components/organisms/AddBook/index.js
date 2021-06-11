@@ -154,7 +154,7 @@ const AddBook = () => {
       >
         <DialogContent>
           <div className={styles.headerSection}>
-            <Text content="Add New Book" variant="text_form_header" />
+            <Text content="Add New Book" variant="textFormHeader" />
             <AppIconButton
               children={<CloseIcon />}
               clickHandler={handleClose}
@@ -166,7 +166,7 @@ const AddBook = () => {
             label="Title"
             type="text"
             id="title"
-            maxLength="40"
+            maxLength={40}
             value={freshBook.title}
             changeHandler={handleInputChange}
             isError={bookFieldError.title.isError}
@@ -176,7 +176,7 @@ const AddBook = () => {
             label="Author"
             type="text"
             id="author"
-            maxLength="40"
+            maxLength={40}
             value={freshBook.author}
             changeHandler={handleInputChange}
             isError={bookFieldError.author.isError}

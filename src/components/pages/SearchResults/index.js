@@ -59,11 +59,11 @@ const SearchResult = ({ query }) => {
   return (
     <div className={styles.root}>
       <div className={styles.header}>
-        <Text content="Search Results" variant="text_header" />
+        <Text content="Search Results" variant="textHeader" />
       </div>
       {filteredBooks.length === 0 ? (
         <Text
-          variant="text_card_title"
+          variant="textCardTitle"
           content="No Results Found. Please Try Different Search term"
         />
       ) : (

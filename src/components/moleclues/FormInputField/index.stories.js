@@ -7,14 +7,9 @@ export default {
 
 const Template = (args) => <FormInputField {...args} />;
 
-export const NormalField = Template.bind({});
-NormalField.args = {
-  label: "Book Name",
-};
-
-export const FieldWithError = Template.bind({});
-FieldWithError.args = {
-  label: "Book Name",
-  isError: true,
+export const Default = Template.bind({});
+Default.args = {
+  label: "Field Label",
+  isError: false,
   errorText: "cannot be empty",
 };

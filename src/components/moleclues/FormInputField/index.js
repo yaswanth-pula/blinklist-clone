@@ -17,9 +17,9 @@ const FormInputField = ({ label, isError, errorText, ...args }) => {
 
   return (
     <div className={styles.form_input}>
-      <Text content={label} variant="text_input_label" />
+      <Text content={label} variant="textInputLabel" />
       <InputField {...args} />
-      {isError && <Text content={errorText} variant="text_input_error" />}
+      {isError && <Text content={errorText} variant="textInputError" />}
     </div>
   );
 };

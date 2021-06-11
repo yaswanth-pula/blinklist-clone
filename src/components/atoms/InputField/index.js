@@ -1,5 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles({
   field: {
@@ -50,6 +51,16 @@ const InputField = ({
       />
     </div>
   );
+};
+
+InputField.propTypes = {
+  id: PropTypes.string,
+  type: PropTypes.oneOf(["text", "number"]),
+  customClass: PropTypes.string,
+  value: PropTypes.string,
+  changeHandler: PropTypes.func,
+  maxLength: PropTypes.number,
+  placeholder: PropTypes.string,
 };
 
 export default InputField;

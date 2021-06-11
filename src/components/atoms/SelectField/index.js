@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import Text from "../../atoms/Text";
 
 const useStyles = makeStyles({
@@ -58,7 +58,7 @@ const SelectField = ({
           );
         })}
       </select>
-      {isError && <Text content={errorText} variant="text_input_error" />}
+      {isError && <Text content={errorText} variant="textInputError" />}
     </div>
   );
 };

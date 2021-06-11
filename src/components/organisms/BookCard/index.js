@@ -97,12 +97,12 @@ const BookCard = ({ bookInfo, variant, parentUpdate }) => {
         <CardContent>
           <Text
             content={bookInfo.title}
-            variant="text_card_title"
+            variant="textCardTitle"
             customClass={styles.text_margin}
           />
           <Text
             content={bookInfo.author}
-            variant="text_card_author"
+            variant="textCardAuthor"
             customClass={styles.text_margin}
           />
           <div className={styles.stat}>
@@ -145,6 +145,7 @@ const BookCard = ({ bookInfo, variant, parentUpdate }) => {
 BookCard.propTypes = {
   bookInfo: PropTypes.object,
   variant: PropTypes.oneOf(["library", "explore"]),
+  parentUpdate: PropTypes.func,
 };
 
 export default BookCard;

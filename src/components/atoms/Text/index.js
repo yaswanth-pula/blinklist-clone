@@ -1,4 +1,5 @@
-import { makeStyles } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 const useStyles = makeStyles({
@@ -9,12 +10,12 @@ const useStyles = makeStyles({
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif`,
   },
-  text_header: {
+  textHeader: {
     fontSize: "2.25rem",
     lineHeight: "2.8125rem",
     fontWeight: "bolder",
   },
-  text_card_title: {
+  textCardTitle: {
     fontSize: "1.125rem",
     fontWeight: "700",
     lineHeight: "1.33",
@@ -23,7 +24,7 @@ const useStyles = makeStyles({
     overflow: "hidden",
     textOverflow: "ellipsis",
   },
-  text_card_author: {
+  textCardAuthor: {
     fontSize: "1rem",
     fontWeight: "500",
     lineHeight: "1.5",
@@ -31,13 +32,13 @@ const useStyles = makeStyles({
     overflow: "hidden",
     textOverflow: "ellipsis",
   },
-  text_card_stat: {
+  textCardStat: {
     fontSize: "0.875rem",
     fontWeight: "400",
     lineHeight: "1.57",
     color: "#3a4649",
   },
-  text_input_label: {
+  textInputLabel: {
     fontSize: "1.125rem",
     fontFamily: "inherit",
     fontWeight: "700",
@@ -46,11 +47,11 @@ const useStyles = makeStyles({
     display: "block",
     marginBottom: ".5rem",
   },
-  text_input_error: {
+  textInputError: {
     color: "#ff445d",
     marginTop: ".25em",
   },
-  text_form_header: {
+  textFormHeader: {
     fontFamily: "inherit",
     fontSize: "1.5rem",
     fontWeight: "700",
@@ -64,13 +65,13 @@ const Text = ({ content, variant, customClass }) => {
   const styles = useStyles();
   const variantStyle = styles[variant];
   return (
-    <span
+    <Typography
       className={[`${styles.text}`, `${variantStyle}`, `${customClass}`].join(
         " "
       )}
     >
       {content}
-    </span>
+    </Typography>
   );
 };
 

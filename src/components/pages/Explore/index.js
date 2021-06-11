@@ -47,7 +47,7 @@ const Explore = ({ selectedCategory }) => {
     <>
       <div className={styles.root}>
         <div className={styles.header}>
-          <Text content={selectedCategory} variant="text_header" />
+          <Text content={selectedCategory} variant="textHeader" />
         </div>
         {isFetching ? (
           <h1>Loading....</h1>

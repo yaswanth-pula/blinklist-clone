@@ -1,8 +1,21 @@
 import Link from ".";
 import KeyboardArrowDownRoundedIcon from "@material-ui/icons/KeyboardArrowDownRounded";
+
 export default {
   title: "Atoms/Link",
   component: Link,
+  parameters: {
+    controls: {
+      include: ["text", "variant", "clickHandler", "endIcon"],
+    },
+  },
+  argTypes: {
+    clickHandler: { table: { disable: true }, action: "clicked" },
+    variant: {
+      options: ["navLink", "exploreCardButton", "libraryCardButton"],
+      control: "select",
+    },
+  },
 };
 
 const Template = (args) => <Link {...args} />;
@@ -18,16 +31,4 @@ WithIcon.args = {
   text: "Explore",
   variant: "navLink",
   endIcon: <KeyboardArrowDownRoundedIcon />,
-};
-
-export const ExploreCardButton = Template.bind({});
-ExploreCardButton.args = {
-  text: "+ Add to Library",
-  variant: "exploreCardButton",
-};
-
-export const LibraryCardButton = Template.bind({});
-LibraryCardButton.args = {
-  text: "Mark As Done",
-  variant: "libraryCardButton",
 };

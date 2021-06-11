@@ -5,6 +5,9 @@ import CloseIcon from "@material-ui/icons/Close";
 export default {
   title: "Moleclues/AppIconButton",
   component: AppIconButton,
+  argTypes: {
+    clickHandler: { table: { disable: true }, action: "clicked" },
+  },
 };
 
 const Template = (args) => <AppIconButton {...args} />;

@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 const useStyles = makeStyles({
@@ -54,12 +54,11 @@ const useStyles = makeStyles({
     },
   },
 });
-const Link = ({ href, text, endIcon, clickHandler, variant, customClass }) => {
+const Link = ({ text, endIcon, clickHandler, variant, customClass }) => {
   const styles = useStyles();
   const variantStyle = styles[variant];
   return (
     <a
-      href={href}
       className={[`${styles.root}`, `${variantStyle}`, customClass].join(" ")}
       onClick={clickHandler ? (event) => clickHandler(event, text) : null}
     >
@@ -70,9 +69,8 @@ const Link = ({ href, text, endIcon, clickHandler, variant, customClass }) => {
 };
 
 Link.propTypes = {
-  href: PropTypes.string,
   text: PropTypes.string.isRequired,
-  endIcon: PropTypes.element,
+  // endIcon: PropTypes.element,
   variant: PropTypes.string,
 };
 

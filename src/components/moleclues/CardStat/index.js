@@ -27,7 +27,7 @@ const CardStat = ({ textContent, icon }) => {
       <Text
         content={textContent}
         customClass={styles.text_marigin}
-        variant={"text_card_stat"}
+        variant={"textCardStat"}
       />
     </div>
   );

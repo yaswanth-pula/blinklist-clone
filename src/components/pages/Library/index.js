@@ -52,7 +52,7 @@ const Library = () => {
   return (
     <div className={styles.root}>
       <div className={styles.header}>
-        <Text content="My Library" variant="text_header" />
+        <Text content="My Library" variant="textHeader" />
       </div>
       <LibraryTabs informParent={renderTabBookList} />
       {isFetching ? (
